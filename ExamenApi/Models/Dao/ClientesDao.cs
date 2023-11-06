@@ -1,4 +1,6 @@
-﻿using ExamenApi.Models.ModelBD;
+﻿using ExamenApi.Models.Bl.Interface;
+using ExamenApi.Models.Dao.Interface;
+using ExamenApi.Models.ModelBD;
 using ExamenApi.Models.Util;
 using System;
 using System.Collections.Generic;
@@ -8,14 +10,18 @@ using static ExamenApi.Models.Dto.ClientesDto;
 
 namespace ExamenApi.Models.Dao
 {
-    public class ClientesDao
+    public class ClientesDao : IClientesDao
     {
-        public static Clientes ObtenerCliente(string email, ref ResultSet result) 
+        private readonly IBDContextSqlLite db;
+        public ClientesDao(IBDContextSqlLite db) 
+        {
+            this.db = db;
+        }
+        public Clientes ObtenerCliente(string email, ref ResultSet result) 
         {
             Clientes user = new Clientes();
             try
             {
-                BDContextSqlLite db = new BDContextSqlLite();
                 user = db.Clientes.Where(x => x.Email == email).FirstOrDefault();
             }catch (Exception ex) 
             {
@@ -24,11 +30,10 @@ namespace ExamenApi.Models.Dao
             }
             return user;
         }
-        public static void CrearCliente(CreateClientDto cliente, ref ResultSet result)
+        public void CrearCliente(CreateClientDto cliente, ref ResultSet result)
         {
             try
             {
-                BDContextSqlLite db = new BDContextSqlLite();
                 Clientes newClientes = new Clientes { Nombre = cliente.Nombre,
                     Apellido = cliente.Apellido,
                     Email = cliente.Email,
@@ -45,11 +50,10 @@ namespace ExamenApi.Models.Dao
                 result.Error = ex;
             }
         }
-        public static void ActualizarCliente(UpdateClientDto cliente, ref ResultSet result)
+        public void ActualizarCliente(UpdateClientDto cliente, ref ResultSet result)
         {
             try
             {
-                BDContextSqlLite db = new BDContextSqlLite();
                 Clientes clientebd = db.Clientes.Where(x => x.ClienteID == cliente.ClienteID).FirstOrDefault();
                 if (clientebd != null) 
                 {

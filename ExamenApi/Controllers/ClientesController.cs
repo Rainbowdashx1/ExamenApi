@@ -1,4 +1,6 @@
-﻿using ExamenApi.Models.Bl;
+﻿using ExamenApi.Models;
+using ExamenApi.Models.Bl;
+using ExamenApi.Models.Bl.Interface;
 using ExamenApi.Models.ModelBD;
 using ExamenApi.Models.Util;
 using System;
@@ -10,6 +12,11 @@ namespace ExamenApi.Controllers
 {
     public class ClientesController : ApiController
     {
+        private readonly IClienteBl ClienteBl;
+        public ClientesController(IClienteBl ClienteBl) 
+        {
+            this.ClienteBl = ClienteBl;
+        }
         [HttpPost]
         [Route("api/GetClient")]
         public IHttpActionResult GetClient(string email)
