@@ -1,17 +1,4 @@
-﻿# Release Notes - Proyecto API
-
-# Versión 1.0.1
-
-## Detalles de la Versión
-
-- Fecha de Lanzamiento: 6 de Noviembre, 2023
-- Versión: 1.0.1
-
-## Nuevas Características
-- Se han creado interfaces para BDContextSqlLite, ClientesDao y ClienteBl.
-- Todas las clases estáticas pasaron a ser clases inyectadas.
-
-# Versión 1.0.0
+# Release Notes - Proyecto API - Versión 1.0.0
 
 ## Detalles de la Versión
 

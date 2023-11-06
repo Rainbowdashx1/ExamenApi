@@ -1,2 +1,3 @@
 2023-11-02 18:57:01.6245|ERROR|ExamenApi.Models.Bl.ClienteBl|Cliente es null con el email consultado : hola123
 2023-11-02 20:12:51.8224|ERROR|ExamenApi.Models.Bl.ClienteBl|Cliente es null con el email consultado : test@hotmail.com
+2023-11-06 19:58:47.4323|ERROR|ExamenApi.Models.Bl.ClienteBl|Cliente es null con el email consultado : test@hotmail.com
